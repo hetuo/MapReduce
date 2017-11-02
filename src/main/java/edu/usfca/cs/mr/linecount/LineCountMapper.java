@@ -23,9 +23,9 @@ public class LineCountMapper
         // tokenize into words.
         StringTokenizer itr = new StringTokenizer(value.toString());
         // emit word, count pairs.
-        while (itr.hasMoreTokens()) {
+        /*while (itr.hasMoreTokens()) {
             context.write(new Text(itr.nextToken()), new IntWritable(1));
-        }
+        }*/
 
         context.write(newKey, one);
     }
