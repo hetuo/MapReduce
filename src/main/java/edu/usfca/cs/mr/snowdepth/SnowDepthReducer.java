@@ -35,8 +35,17 @@ public class SnowDepthReducer
                 return;
             sum += value.get();
         }
+        double tmp = 0.0;
+        for (Double d : map.keySet()){
+            if (map.get(d).equals(key.toString()) && sum > d){
+                tmp = d;
+                break;
+            }
+        }
+        if (tmp != 0.0)
+            map.remove(tmp);
         map.put(sum, key.toString());
-        if (map.size() > 5)
+        if (map.size() > 1)
             map.remove(map.lastKey());
     }
 

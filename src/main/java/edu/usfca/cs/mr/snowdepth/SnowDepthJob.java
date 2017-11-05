@@ -23,7 +23,7 @@ public class SnowDepthJob {
             Configuration conf = new Configuration();
             // Give the MapRed job a name. You'll see this name in the Yarn
             // webapp.
-            Job job = Job.getInstance(conf, "line count job");
+            Job job = Job.getInstance(conf, "snow depth job");
             // Current class.
             job.setJarByClass(SnowDepthJob.class);
             // Mapper
