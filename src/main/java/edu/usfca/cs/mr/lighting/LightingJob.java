@@ -21,10 +21,10 @@ public class LightingJob {
         try {
             Configuration conf = new Configuration();
             Job job1 = Job.getInstance(conf, "lighting job1");
-            job1.setJarByClass(LineCountJob.class);
-            job1.setMapperClass(LineCountMapper.class);
-            job1.setCombinerClass(LineCountReducer.class);
-            job1.setReducerClass(LineCountReducer.class);
+            job1.setJarByClass(LightingJob.class);
+            job1.setMapperClass(LightingMapper1.class);
+            job1.setCombinerClass(LightingReducer1.class);
+            job1.setReducerClass(LightingReducer1.class);
             job1.setMapOutputKeyClass(Text.class);
             job1.setMapOutputValueClass(Text.class);
             job1.setOutputKeyClass(Text.class);
@@ -33,10 +33,10 @@ public class LightingJob {
             FileOutputFormat.setOutputPath(job1, new Path(args[1]));
 
             Job job2 = Job.getInstance(conf, "lighting job2");
-            job2.setJarByClass(LineCountJob.class);
-            job2.setMapperClass(LineCountMapper.class);
-            job2.setCombinerClass(LineCountReducer.class);
-            job2.setReducerClass(LineCountReducer.class);
+            job2.setJarByClass(LightingJob.class);
+            job2.setMapperClass(LightingMapper2.class);
+            job2.setCombinerClass(LightingReducer2.class);
+            job2.setReducerClass(LightingReducer2.class);
             job2.setMapOutputKeyClass(Text.class);
             job2.setMapOutputValueClass(Text.class);
             job2.setOutputKeyClass(Text.class);
