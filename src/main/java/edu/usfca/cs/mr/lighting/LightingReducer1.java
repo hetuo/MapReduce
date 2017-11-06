@@ -17,7 +17,7 @@ public class LightingReducer1
         extends Reducer<Text, Text, Text, Text> {
 
 
-    PriorityQueue<Element> queue = new PriorityQueue<>(new Comparator<Element>() {
+    PriorityQueue<Element> queue = new PriorityQueue<Element>(new Comparator<Element>() {
         @Override
         public int compare(Element e1, Element e2) {
             return e1.lighting.compareTo(e2.lighting);
