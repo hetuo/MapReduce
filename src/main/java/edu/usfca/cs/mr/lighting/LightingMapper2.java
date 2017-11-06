@@ -16,6 +16,7 @@ public class LightingMapper2
             throws IOException, InterruptedException {
         // tokenize into words.
         //String[] tokens = value.toString().split("\\t");
+
         context.write(new Text("lighting"), value);
     }
 }

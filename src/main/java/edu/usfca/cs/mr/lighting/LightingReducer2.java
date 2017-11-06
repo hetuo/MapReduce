@@ -58,7 +58,7 @@ public class LightingReducer2
         Iterator<Element> iterator = queue.iterator();
         while (iterator.hasNext()){
             Element tmp = iterator.next();
-            context.write(new Text("lighting"), new Text(tmp.geohash + "    " + tmp.lighting));
+            context.write(new Text("lighting"), new Text(tmp.geohash + "\t" + tmp.lighting));
         }
     }
 
