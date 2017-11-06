@@ -5,9 +5,7 @@ import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
+
 
 /**
  * Reducer: Input to the reducer is the output from the mapper. It receives
@@ -22,10 +20,8 @@ public class HottestReducer
     @Override
     protected void reduce(
             Text key, Iterable<Text> values, Context context)
-            throws IOException, InterruptedException, FileNotFoundException {
-        System.setOut(new PrintStream(new File("./log.txt")));
+            throws IOException, InterruptedException {
         for (Text value : values){
-            System.out.println("hetuo test" + value.toString());
             String[] tmp = value.toString().split(",");
             if (geohash == null && time == null && temperature == null){
                 geohash = key.toString();
@@ -42,7 +38,7 @@ public class HottestReducer
     @Override
     protected void cleanup(Reducer<Text, Text, Text, Text>.Context context)
             throws IOException, InterruptedException {
-        context.write(new Text(geohash), new Text(time + " " + temperature));
+        context.write(new Text(geohash), new Text(time + "," + temperature));
     }
 
 }
