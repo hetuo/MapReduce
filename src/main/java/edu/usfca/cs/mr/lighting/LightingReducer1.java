@@ -6,9 +6,7 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Reducer: Input to the reducer is the output from the mapper. It receives
@@ -18,12 +16,23 @@ import java.util.TreeMap;
 public class LightingReducer1
         extends Reducer<Text, Text, Text, Text> {
 
-    TreeMap<String, String> map = new TreeMap<>(new Comparator<String>() {
+
+    PriorityQueue<Element> queue = new PriorityQueue<>(new Comparator<Element>() {
         @Override
-        public int compare(String t1, String t2) {
-            return t2.compareTo(t1);
+        public int compare(Element e1, Element e2) {
+            return e1.lighting.compareTo(e2.lighting);
         }
     });
+
+    private class Element{
+        public String geohash;
+        public String lighting;
+
+        public Element(String geohash, String lighting){
+            this.geohash = geohash;
+            this.lighting = lighting;
+        }
+    }
 
     @Override
     protected void reduce(
@@ -31,30 +40,25 @@ public class LightingReducer1
             throws IOException, InterruptedException {
         String lighting = null;
         for (Text value : values){
-            if (lighting == null)
-                lighting = value.toString();
-            else if (value.toString().compareTo(lighting) > 0)
-                lighting = value.toString();
-        }
-        String tmp = null;
-        for (String l : map.keySet()){
-            if (map.get(l).equals(key.toString()) && lighting.compareTo(l) > 0){
-                tmp = l;
-                break;
+            if (queue.size() < 3)
+                queue.add(new Element(key.toString(), value.toString()));
+            else{
+                Element tmp = queue.peek();
+                if (value.toString().compareTo(tmp.lighting) > 0){
+                    queue.poll();
+                    queue.add(new Element(key.toString(), value.toString()));
+                }
             }
         }
-        if (tmp != null)
-            map.remove(tmp);
-        map.put(lighting, key.toString());
-        if (map.size() > 3)
-            map.remove(map.lastKey());
     }
 
     @Override
     protected void cleanup(Reducer<Text, Text, Text, Text>.Context context)
             throws IOException, InterruptedException {
-        for (Map.Entry<String, String> entry : map.entrySet()){
-            context.write(new Text(entry.getValue()), new Text(entry.getKey()));
+        Iterator<Element> iterator = queue.iterator();
+        while (iterator.hasNext()){
+            Element tmp = iterator.next();
+            context.write(new Text(tmp.geohash), new Text(tmp.lighting));
         }
     }
 
