@@ -23,9 +23,12 @@ public class DriestReducer2
             Text key, Iterable<Text> values, Context context)
             throws IOException, InterruptedException {
         for (Text value : values){
-            String nextKey = value.toString().substring(0, 2);
-            String nextValue = value.toString().substring(3);
-            context.write(new Text(nextKey), new Text(nextValue));
+            //System.out.println(value.toString());
+            //String str = value.toString();
+            //String nextKey = str.substring(0, 2);
+            //String nextValue = str.substring(3);
+            //context.write(new Text(nextKey), new Text(nextValue));
+            context.write(null, value);
         }
     }
 
