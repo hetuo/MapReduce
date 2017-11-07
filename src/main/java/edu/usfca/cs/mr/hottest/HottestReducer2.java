@@ -38,7 +38,8 @@ public class HottestReducer2
     @Override
     protected void cleanup(Reducer<Text, Text, Text, Text>.Context context)
             throws IOException, InterruptedException {
-        context.write(new Text("Hottest"), new Text(geohash + "\t" + time + "\t" + temperature));
+        if (geohash != null)
+            context.write(new Text("Hottest"), new Text(geohash + "\t" + time + "\t" + temperature));
     }
 
 }
