@@ -1,11 +1,7 @@
 package edu.usfca.cs.mr.hottest;
 
-import edu.usfca.cs.mr.linecount.LineCountJob;
-import edu.usfca.cs.mr.linecount.LineCountMapper;
-import edu.usfca.cs.mr.linecount.LineCountReducer;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
@@ -22,15 +18,15 @@ public class HottestJob {
             Configuration conf = new Configuration();
             // Give the MapRed job a name. You'll see this name in the Yarn
             // webapp.
-            Job job = Job.getInstance(conf, "hottest job");
+            Job job = Job.getInstance(conf, "hottest job1");
             // Current class.
             job.setJarByClass(HottestJob.class);
             // Mapper
-            job.setMapperClass(HottestMapper.class);
+            job.setMapperClass(HottestMapper1.class);
             // Combiner. We use the reducer as the combiner in this case.
-            job.setCombinerClass(HottestReducer.class);
+            job.setCombinerClass(HottestReducer1.class);
             // Reducer
-            job.setReducerClass(HottestReducer.class);
+            job.setReducerClass(HottestReducer1.class);
             // Outputs from the Mapper.
             job.setMapOutputKeyClass(Text.class);
             job.setMapOutputValueClass(Text.class);
@@ -44,7 +40,22 @@ public class HottestJob {
             // path to output in HDFS
             FileOutputFormat.setOutputPath(job, new Path(args[1]));
             // Block until the job is completed.
-            System.exit(job.waitForCompletion(true) ? 0 : 1);
+
+
+
+            Job job2 = Job.getInstance(conf, "hottest job2");
+            job2.setJarByClass(HottestJob.class);
+            job2.setMapperClass(HottestMapper2.class);
+            job2.setCombinerClass(HottestReducer2.class);
+            job2.setReducerClass(HottestReducer2.class);
+            job2.setMapOutputKeyClass(Text.class);
+            job2.setMapOutputValueClass(Text.class);
+            job2.setOutputKeyClass(Text.class);
+            job2.setOutputValueClass(Text.class);
+            FileInputFormat.addInputPath(job2, new Path(args[1]));
+            FileOutputFormat.setOutputPath(job2, new Path(args[2]));
+
+            System.exit((job.waitForCompletion(true) && job2.waitForCompletion(true))? 0 : 1);
         } catch (IOException e) {
             System.err.println(e.getMessage());
         } catch (InterruptedException e) {

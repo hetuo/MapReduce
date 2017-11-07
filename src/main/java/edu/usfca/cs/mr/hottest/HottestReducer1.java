@@ -12,7 +12,7 @@ import java.io.IOException;
  * word, list<count> pairs.  Sums up individual counts per given word. Emits
  * <word, total count> pairs.
  */
-public class HottestReducer
+public class HottestReducer1
         extends Reducer<Text, Text, Text, Text> {
     String geohash = null;
     String time = null;
@@ -22,7 +22,7 @@ public class HottestReducer
             Text key, Iterable<Text> values, Context context)
             throws IOException, InterruptedException {
         for (Text value : values){
-            String[] tmp = value.toString().split(",");
+            String[] tmp = value.toString().split("\\t");
             if (geohash == null && time == null && temperature == null){
                 geohash = key.toString();
                 time = tmp[0];
@@ -38,7 +38,7 @@ public class HottestReducer
     @Override
     protected void cleanup(Reducer<Text, Text, Text, Text>.Context context)
             throws IOException, InterruptedException {
-        context.write(new Text(geohash), new Text(time + "," + temperature));
+        context.write(new Text(geohash), new Text(time + "\t" + temperature));
     }
 
 }
