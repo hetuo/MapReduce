@@ -61,7 +61,7 @@ public class SnowDepthReducer2
         Iterator<Element> iterator = queue.iterator();
         while(iterator.hasNext()){
             Element tmp = iterator.next();
-            context.write(new Text(tmp.geohash), new Text(tmp.snow));
+            context.write(new Text("snow"), new Text(tmp.geohash + "\t" + tmp.snow ));
         }
     }
 
