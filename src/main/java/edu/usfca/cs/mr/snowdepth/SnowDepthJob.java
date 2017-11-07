@@ -57,7 +57,7 @@ public class SnowDepthJob {
             FileInputFormat.addInputPath(job2, new Path(args[1]));
             FileOutputFormat.setOutputPath(job2, new Path(args[2]));
 
-            System.exit(job.waitForCompletion(true) ? 0 : 1);
+            System.exit(job.waitForCompletion(true) && job2.waitForCompletion(true)? 0 : 1);
         } catch (IOException e) {
             System.err.println(e.getMessage());
         } catch (InterruptedException e) {
