@@ -34,7 +34,7 @@ public class DriestJob {
 
             Job job2 = Job.getInstance(conf, "lighting job2");
             job2.setJarByClass(DriestJob.class);
-            job2.setMapperClass(DriestMapper1.class);
+            job2.setMapperClass(DriestMapper2.class);
             job2.setCombinerClass(DriestReducer2.class);
             job2.setReducerClass(DriestReducer2.class);
             job2.setMapOutputKeyClass(Text.class);
