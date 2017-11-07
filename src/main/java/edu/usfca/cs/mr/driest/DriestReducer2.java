@@ -22,8 +22,11 @@ public class DriestReducer2
     protected void reduce(
             Text key, Iterable<Text> values, Context context)
             throws IOException, InterruptedException {
-        for (Text value : values)
-            context.write(null, value);
+        for (Text value : values){
+            String nextKey = value.toString().substring(0, 7);
+            String nextValue = value.toString().substring(8);
+            context.write(new Text(nextKey), new Text(nextValue));
+        }
     }
 
 }

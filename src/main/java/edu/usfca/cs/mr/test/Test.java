@@ -12,8 +12,8 @@ public class Test {
 
     public static void main(String[] args) {
 
-        SimpleDateFormat t = new SimpleDateFormat("yyyy-MM");
-        long s = Long.parseLong("1426377600000");
+        SimpleDateFormat t = new SimpleDateFormat("MM");
+        long s = Long.parseLong("1426442400000");
         String str = t.format(s);
         System.out.println(str);
     }

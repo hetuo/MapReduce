@@ -33,7 +33,7 @@ public class DriestMapper1
     }
 
     protected String getMonth(String timestamp){
-        SimpleDateFormat t = new SimpleDateFormat("yyyy-MM");
+        SimpleDateFormat t = new SimpleDateFormat("MM");
         long s = Long.parseLong(timestamp);
         return t.format(s);
     }
