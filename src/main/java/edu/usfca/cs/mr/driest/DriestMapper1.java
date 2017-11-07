@@ -45,6 +45,6 @@ public class DriestMapper1
             initialGeohashs();
         String[] tokens = value.toString().split("\\t");
         if (geohashs.contains(tokens[1].substring(0, 4)))
-            context.write(new Text(getMonth(tokens[0])),  new Text(tokens[12]) + "\t"+tokens[55]);
+            context.write(new Text(getMonth(tokens[0])),  new Text(tokens[12] + "\t"+tokens[55]));
     }
 }
