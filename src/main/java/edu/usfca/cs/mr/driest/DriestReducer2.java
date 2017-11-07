@@ -24,11 +24,14 @@ public class DriestReducer2
             throws IOException, InterruptedException {
         for (Text value : values){
             //System.out.println(value.toString());
-            //String str = value.toString();
-            //String nextKey = str.substring(0, 2);
-            //String nextValue = str.substring(3);
-            //context.write(new Text(nextKey), new Text(nextValue));
-            context.write(null, value);
+            if (key.toString().equals("Bay Area")){
+                String str = value.toString();
+                String nextKey = str.substring(0, 2);
+                String nextValue = str.substring(3);
+                context.write(new Text(nextKey), new Text(nextValue));
+            } else{
+                context.write(key, value);
+            }
         }
     }
 

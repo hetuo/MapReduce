@@ -17,6 +17,6 @@ public class DriestMapper2
         // tokenize into words.
         //String[] tokens = value.toString().split("\\t");
 
-        context.write(new Text("#Bay Area\n"), value);
+        context.write(new Text("Bay Area"), value);
     }
 }
