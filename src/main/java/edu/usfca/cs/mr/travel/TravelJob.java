@@ -22,9 +22,9 @@ public class TravelJob {
             Configuration conf = new Configuration();
             Job job1 = Job.getInstance(conf, "travel job1");
             job1.setJarByClass(TravelJob.class);
-            /*job1.setMapperClass(TravelMapper1.class);
-            job1.setCombinerClass(TravelReducer1.class);
-            job1.setReducerClass(TravelReducer1.class);*/
+            job1.setMapperClass(TravelMapper1.class);
+            //job1.setCombinerClass(TravelReducer1.class);
+            job1.setReducerClass(TravelReducer1.class);
             job1.setMapOutputKeyClass(Text.class);
             job1.setMapOutputValueClass(Text.class);
             job1.setOutputKeyClass(Text.class);
@@ -34,9 +34,9 @@ public class TravelJob {
 
             Job job2 = Job.getInstance(conf, "travel job2");
             job2.setJarByClass(TravelJob.class);
-            /*job2.setMapperClass(TravelMapper2.class);
-            job2.setCombinerClass(TravelReducer2.class);
-            job2.setReducerClass(TravelReducer2.class);*/
+            job2.setMapperClass(TravelMapper2.class);
+            //job2.setCombinerClass(TravelReducer2.class);
+            job2.setReducerClass(TravelReducer2.class);
             job2.setMapOutputKeyClass(Text.class);
             job2.setMapOutputValueClass(Text.class);
             job2.setOutputKeyClass(Text.class);
