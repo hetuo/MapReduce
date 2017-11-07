@@ -6,24 +6,40 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Reducer: Input to the reducer is the output from the mapper. It receives
  * word, list<count> pairs.  Sums up individual counts per given word. Emits
  * <word, total count> pairs.
  */
-public class SnowDepthReducer
+public class SnowDepthReducer1
         extends Reducer<Text, DoubleWritable, Text, DoubleWritable> {
 
-    TreeMap<Double, String> map = new TreeMap<>(new Comparator<Double>() {
+
+    PriorityQueue<Element> queue = new PriorityQueue<Element>(10, new Comparator<Element>() {
         @Override
-        public int compare(Double t1, Double t2) {
-            return t2.compareTo(t1);
+        public int compare(Element e1, Element e2) {
+            if (e1.snow > e2.snow)
+                return 1;
+            else if (e1.snow < e2.snow)
+                return -1;
+            else
+                return 0;
         }
     });
+
+
+    private class Element{
+        public String geohash;
+        public double snow;
+
+        public Element(String geohash, double snow){
+            this.geohash = geohash;
+            this.snow = snow;
+        }
+    }
+
 
     @Override
     protected void reduce(
@@ -35,25 +51,24 @@ public class SnowDepthReducer
                 return;
             sum += value.get();
         }
-        double tmp = 0.0;
-        for (Double d : map.keySet()){
-            if (map.get(d).equals(key.toString()) && sum > d){
-                tmp = d;
-                break;
+        if (queue.size() < 3)
+            queue.add(new Element(key.toString(), sum));
+        else{
+            Element tmp = queue.peek();
+            if (sum > tmp.snow){
+                queue.poll();
+                queue.add(new Element(key.toString(), sum));
             }
         }
-        if (tmp != 0.0)
-            map.remove(tmp);
-        map.put(sum, key.toString());
-        if (map.size() > 1)
-            map.remove(map.lastKey());
     }
 
     @Override
     protected void cleanup(Reducer<Text, DoubleWritable, Text, DoubleWritable>.Context context)
         throws IOException, InterruptedException {
-        for (Map.Entry<Double, String> entry : map.entrySet()){
-            context.write(new Text(entry.getValue()), new DoubleWritable(entry.getKey()));
+        Iterator<Element> iterator = queue.iterator();
+        while(iterator.hasNext()){
+            Element tmp = iterator.next();
+            context.write(new Text(tmp.geohash), new DoubleWritable(tmp.snow));
         }
     }
 

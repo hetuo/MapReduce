@@ -12,7 +12,7 @@ import java.util.StringTokenizer;
 /**
  * Mapper: Reads line by line, split them into words. Emit <word, 1> pairs.
  */
-public class SnowDepthMapper
+public class SnowDepthMapper1
         extends Mapper<LongWritable, Text, Text, DoubleWritable> {
 
     @Override
