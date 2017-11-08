@@ -18,8 +18,8 @@ public class TravelMapper1
         geohashs.add("c6");
         geohashs.add("9q");
         geohashs.add("dr");
-        geohashs.add("ws");
-        geohashs.add("yb");
+        geohashs.add("9x");
+        geohashs.add("dn");
     }
 
     protected String getMonth(String timestamp){
