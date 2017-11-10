@@ -1,0 +1,3 @@
+lighting	8grr	1.0
+lighting	8grr	1.0
+lighting	8grr	1.0
