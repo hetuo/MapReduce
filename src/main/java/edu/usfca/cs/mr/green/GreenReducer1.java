@@ -57,18 +57,21 @@ public class GreenReducer1
         double windPower = 0.0;
         double solarPower = 0.0;
         double sum = 0.0;
-        int num = 0;
+        long num = 0;
         for (Text value : values){
             String[] tokens = value.toString().split("\\t");
-            solarPower += (calculateSolar(Double.parseDouble(tokens[0])) / 100000);
-            windPower += calculateWind(Double.parseDouble(tokens[1]) / 100000);
+            solarPower += (calculateSolar(Double.parseDouble(tokens[0])) / 1000);
+            windPower += calculateWind(Double.parseDouble(tokens[1]) / 1000);
             num++;
         }
         if (num != 0){
             sum = windPower + solarPower;
-            context.write(key, new Text(Double.toString((windPower / num) * 100000) +
-                "\t" + Double.toString((solarPower / num) * 100000) +
-                "\t" + Double.toString((sum / num) * 100000)));
+            double d1 = windPower * 1000 / num;
+            double d2 = solarPower * 1000 / num;
+            double d3 = sum * 1000 / num;
+            context.write(key, new Text(Double.toString(d1) +
+                "\t" + Double.toString(d2) +
+                "\t" + Double.toString(d3)));
         }
     }
 
