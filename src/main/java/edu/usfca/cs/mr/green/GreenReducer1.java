@@ -60,15 +60,16 @@ public class GreenReducer1
         long num = 0;
         for (Text value : values){
             String[] tokens = value.toString().split("\\t");
-            solarPower += (calculateSolar(Double.parseDouble(tokens[0])) / 1000);
-            windPower += calculateWind(Double.parseDouble(tokens[1]) / 1000);
+            solarPower += (calculateSolar(Double.parseDouble(tokens[0])) / 100000);
+            windPower += calculateWind(Double.parseDouble(tokens[1]));
             num++;
         }
+        System.out.println("hetuo test: " + num + "\t" + solarPower + "\t" + windPower);
         if (num != 0){
             sum = windPower + solarPower;
-            double d1 = windPower * 1000 / num;
-            double d2 = solarPower * 1000 / num;
-            double d3 = sum * 1000 / num;
+            double d1 = windPower / num;
+            double d2 = solarPower * 100000 / num;
+            double d3 = d1 + d2;
             context.write(key, new Text(Double.toString(d1) +
                 "\t" + Double.toString(d2) +
                 "\t" + Double.toString(d3)));
