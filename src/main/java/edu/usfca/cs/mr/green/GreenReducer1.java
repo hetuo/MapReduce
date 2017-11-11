@@ -68,7 +68,7 @@ public class GreenReducer1
             windPower += calculateWind(Double.parseDouble(tokens[1]));
             num++;
             if (key.toString().equals("9m5f"))
-                System.out.println("hetuo test: " + key.toString() + "\t" + num + "\t" + solarPower + "\t" + windPower);
+                System.out.println(value.toString() + "hetuo test: " + key.toString() + "\t" + num + "\t" + solarPower + "\t" + windPower);
         }
 
         if (num != 0){
