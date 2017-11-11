@@ -40,14 +40,18 @@ public class GreenReducer1
         double p = 1.23;
         double cp = 0.4;
         double A = 3.14 * l * l;
-        return 0.5 * p * A * (speed * speed * speed) * 0.4;
+        return 0.5 * p * A * (speed * speed * speed) * 0.4 / 1000000;
+        /*if (speed >=5 && speed <20)
+            return speed;
+        else
+            return 0;*/
     }
 
     protected double calculateSolar(double cloud){
 
         if (cloud > 100)
             System.out.println("Cloud......... " + cloud);
-        return 990 * (1 - 0.75 * ((cloud / 100.0) * (cloud / 100.0) * (cloud / 100.0)));
+        return 990 * (1 - 0.75 * ((cloud / 100.0) * (cloud / 100.0) * (cloud / 100.0))) * 60000 / 1000000;
     }
 
     @Override
@@ -60,15 +64,17 @@ public class GreenReducer1
         long num = 0;
         for (Text value : values){
             String[] tokens = value.toString().split("\\t");
-            solarPower += (calculateSolar(Double.parseDouble(tokens[0])) / 100000);
+            solarPower += calculateSolar(Double.parseDouble(tokens[0]));
             windPower += calculateWind(Double.parseDouble(tokens[1]));
             num++;
+            if (key.toString().equals("9m5f"))
+                System.out.println("hetuo test: " + key.toString() + "\t" + num + "\t" + solarPower + "\t" + windPower);
         }
-        System.out.println("hetuo test: " + num + "\t" + solarPower + "\t" + windPower);
+
         if (num != 0){
             sum = windPower + solarPower;
             double d1 = windPower / num;
-            double d2 = solarPower * 100000 / num;
+            double d2 = solarPower/ num;
             double d3 = d1 + d2;
             context.write(key, new Text(Double.toString(d1) +
                 "\t" + Double.toString(d2) +
