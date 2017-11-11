@@ -44,9 +44,10 @@ public class GreenReducer1
     }
 
     protected double calculateSolar(double cloud){
+
         if (cloud > 100)
             System.out.println("Cloud......... " + cloud);
-        return 990 * (1 - 0.75 * Math.pow(cloud / 100, 3));
+        return 990 * (1 - 0.75 * ((cloud / 100.0) * (cloud / 100.0) * (cloud / 100.0)));
     }
 
     @Override
