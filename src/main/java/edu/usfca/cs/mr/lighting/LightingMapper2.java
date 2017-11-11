@@ -17,6 +17,6 @@ public class LightingMapper2
         // tokenize into words.
         //String[] tokens = value.toString().split("\\t");
 
-        context.write(new Text("snow"), value);
+        context.write(new Text("lighting"), value);
     }
 }

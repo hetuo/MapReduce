@@ -16,50 +16,18 @@ import java.util.*;
 public class LightingReducer1
         extends Reducer<Text, Text, Text, Text> {
 
-
-    PriorityQueue<Element> queue = new PriorityQueue<Element>(10, new Comparator<Element>() {
-        @Override
-        public int compare(Element e1, Element e2) {
-            return e1.lighting.compareTo(e2.lighting);
-        }
-    });
-
-    private class Element{
-        public String geohash;
-        public String lighting;
-
-        public Element(String geohash, String lighting){
-            this.geohash = geohash;
-            this.lighting = lighting;
-        }
-    }
-
     @Override
     protected void reduce(
             Text key, Iterable<Text> values, Context context)
             throws IOException, InterruptedException {
-        String lighting = null;
+        double lighting = 0.0;
+        int num = 0;
         for (Text value : values){
-            if (queue.size() < 3)
-                queue.add(new Element(key.toString(), value.toString()));
-            else{
-                Element tmp = queue.peek();
-                if (value.toString().compareTo(tmp.lighting) > 0){
-                    queue.poll();
-                    queue.add(new Element(key.toString(), value.toString()));
-                }
-            }
+            lighting += Double.parseDouble(value.toString());
+            num++;
         }
-    }
-
-    @Override
-    protected void cleanup(Reducer<Text, Text, Text, Text>.Context context)
-            throws IOException, InterruptedException {
-        Iterator<Element> iterator = queue.iterator();
-        while (iterator.hasNext()){
-            Element tmp = iterator.next();
-            context.write(new Text(tmp.geohash), new Text(tmp.lighting));
-        }
+        if (num != 0)
+            context.write(key, new Text(Double.toString(lighting / num)));
     }
 
 }
