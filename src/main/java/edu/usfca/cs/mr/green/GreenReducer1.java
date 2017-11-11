@@ -40,6 +40,8 @@ public class GreenReducer1
         double p = 1.23;
         double cp = 0.4;
         double A = 3.14 * l * l;
+        if (speed < 5 || speed > 20)
+            return 0;
         return 0.5 * p * A * (speed * speed * speed) * 0.4 / 1000000;
         /*if (speed >=5 && speed <20)
             return speed;
@@ -49,8 +51,8 @@ public class GreenReducer1
 
     protected double calculateSolar(double cloud){
 
-        if (cloud > 100)
-            System.out.println("Cloud......... " + cloud);
+        if (cloud < 0 || cloud > 100)
+            return 0;
         return 990 * (1 - 0.75 * ((cloud / 100.0) * (cloud / 100.0) * (cloud / 100.0))) * 60000 / 1000000;
     }
 
