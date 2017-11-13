@@ -2,7 +2,8 @@ How many records are in the dataset?<br>
 Total lines 324810912
 
 Are there any Geohashes that have snow depths greater than zero for the entire year? List some of the top Geohashes.<br>
-snow	c41v48pupf00	94.841847<br>
+snow	c41v48pupf00	94.841847<br>![](/image/image0.png)<br>
+
 snow	c41ueb1jyypb	97.52479910000001<br>
 snow 	c1grzzxwt1bp 	96.27959772999996<br>
 
