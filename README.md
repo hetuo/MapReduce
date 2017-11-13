@@ -17,6 +17,22 @@ lighting 	f4we 	9.990485252140819E-4<br>![](/image/image6.png)<br>
 
 What is the driest month in the bay area? This should include a histogram with data from each month. (Note: how did you determine what data points are in the bay area?)<br>
 See driest.pdf<br>
+  1 # Bay area driest<br>
+  2 01  90.0    1.0 80802.54275810026   30.108865710560625<br><br>
+  3 02  97.0    1.0 41408.41587239993   27.227335164835164<br>
+  4 03  100.0   1.0 75620.94398159963   23.56841388699796<br>
+  5 04  100.0   1.0 48470.329071200315  33.24974012474012<br>
+  6 05  98.0    1.0 92340.67424319984   28.81575682382134<br>
+  7 06  100.0   1.0 97271.60821730031   24.47441778405081<br>
+  8 07  99.0    1.0 139001.72815919906  34.77459016393443<br>
+  9 08  83.0    1.0 106286.97061500023  23.17535853976532<br>
+ 10 09  95.0    1.0 76322.76857489932   30.895505097312327<br>
+ 11 10  99.0    1.0 113630.45992830156  31.772380636604776<br>
+ 12 11  100.0   1.0 75199.26409569931   37.25371687136393<br>
+ 13 12  100.0   1.0 64651.31594539975   46.1183608058608<br>
+<br>![](/image/image-driest.png)<br>
+
+
 
 After graduating from USF, you found a startup that aims to provide personalized travel itineraries using big data analysis. Given your own personal preferences, build a plan for a year of travel across 5 locations. Or, in other words: pick 5 regions. What is the best time of year to visit them based on the dataset?<br>
   1 Best    c6  07  292.6152845697303 ![](/image/image7.png)<br>
@@ -39,3 +55,20 @@ Best sum 	d6g7 	56.703870115925426<br>
 
 Given a Geohash prefix, create a climate chart for the region. This includes high, low, and average temperatures, as well as monthly average rainfall<br>
 See climate.pdf<br>
+  1 # Bay area<br>
+  2 01  294.53485   270.60333   80802.54275809837   284.14202069099565<br>
+  3 02  297.76508   270.21588   41408.41587239984   286.8383830494436<br>
+  4 03  306.60608   271.0848    75620.94398159995   288.5873759019719<br>
+  5 04  309.51392   270.46393   48470.32907120059   287.4621737525995<br>
+  6 05  307.76978   276.15454   92340.67424320128   288.9143955024837<br>
+  7 06  318.2832    278.19702   97271.60821730037   293.33153587861295<br>
+  8 07  317.71118   277.70215   139001.72815919883  295.1986037011418<br>
+  9 08  318.97388   278.45557   106286.97061500065  295.43758859192195<br>
+ 10 09  317.88818   278.1482    76322.7685748983    295.2435494439341<br>
+ 11 10  311.6577    270.60333   113630.45992829802  292.648857453582<br>
+ 12 11  299.20288   268.73056   75199.26409569876   284.92863531027297<br>
+ 13 12  306.60608   269.92175   64651.315945399256  283.28145431318814<br>
+ 
+<br>![](/image/image-climate.png)<br> 
+
+
