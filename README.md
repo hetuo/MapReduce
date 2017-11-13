@@ -2,17 +2,18 @@ How many records are in the dataset?<br>
 Total lines 324810912
 
 Are there any Geohashes that have snow depths greater than zero for the entire year? List some of the top Geohashes.<br>
-snow	c41v48pupf00	94.841847<br>
-snow	c41ueb1jyypb	97.52479910000001<br>
-snow 	c1grzzxwt1bp 	96.27959772999996<br>
+snow	c41v48pupf00	94.841847<br>![](/image/image0.png)<br>
+
+snow	c41ueb1jyypb	97.52479910000001<br>![](/image/image1.png)<br>
+snow 	c1grzzxwt1bp 	96.27959772999996<br>![](/image/image2.png)<br>
 
 When and where was the hottest temperature observed in the dataset? Is it an anomaly?<br>
-Hottest 9g76dbr175ez 2015-04 329.7295<br>
+Hottest 9g76dbr175ez 2015-04 329.7295<br>![](/image/image3.png)<br>
 
 Where are you most likely to be struck by lightning? Use a precision of 4 Geohash characters and provide the top 3 locations.<br>
-lighting	cft9	9.990485252140819E-4<br>
-lighting	f4hx	9.990485252140819E-4<br>
-lighting 	f4we 	9.990485252140819E-4<br>
+lighting	cft9	9.990485252140819E-4<br>![](/image/image4.png)<br>
+lighting	f4hx	9.990485252140819E-4<br>![](/image/image5.png)<br>
+lighting 	f4we 	9.990485252140819E-4<br>![](/image/image6.png)<br>
 
 What is the driest month in the bay area? This should include a histogram with data from each month. (Note: how did you determine what data points are in the bay area?)<br>
 See driest.pdf<br>
