@@ -49,10 +49,10 @@ public class TravelReducer1
             if (month == null){
                 month = entry.getKey();
                 Element tmp = entry.getValue();
-                diff = Math.abs(tmp.sum / tmp.num - 68);
+                diff = Math.abs(tmp.sum / tmp.num - 293.15);
             }else{
                 Element tmp = entry.getValue();
-                double diff1 = Math.abs(tmp.sum / tmp.num - 68);
+                double diff1 = Math.abs(tmp.sum / tmp.num - 293.15);
                 if (diff1 < diff){
                     month = entry.getKey();
                     diff = diff1;
