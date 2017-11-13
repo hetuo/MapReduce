@@ -19,11 +19,11 @@ What is the driest month in the bay area? This should include a histogram with d
 See driest.pdf<br>
 
 After graduating from USF, you found a startup that aims to provide personalized travel itineraries using big data analysis. Given your own personal preferences, build a plan for a year of travel across 5 locations. Or, in other words: pick 5 regions. What is the best time of year to visit them based on the dataset?<br>
-Best	9x	12	267.0385657894273<br>
-Best	dn	01	277.77229423804914<br>
-Best	9q	12	278.31212156086275<br>
-Best	c6	02	255.66637980409874<br>
-Best 	dr 	02 	267.63622495052135<br>
+  1 Best    c6  07  292.6152845697303 ![](/image/image7.png)<br>
+  2 Best    dn  05  292.122054233223 ![](/image/image8.png)<br>
+  3 Best    9q  10  291.42525366977986![](/image/image9.png)<br>
+  4 Best    dr  07  294.12930454421934![](/image/image10.png)<br>
+  5 Best    9x  06  293.1151512850738![](/image/image11.png)<br>
 
 Your travel startup is so successful that you move on to green energy; here, you want to help power companies plan out the locations of solar and wind farms across North America. Write a MapReduce job that locates the top 3 places for solar and wind farms, as well as a combination of both (solar + wind farm). You will report a total of 9 Geohashes as well as their relevant attributes (for example, cloud cover and wind speeds).<br>
 
