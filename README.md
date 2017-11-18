@@ -9,6 +9,7 @@ snow 	c1grzzxwt1bp 	96.27959772999996<br>![](/image/image2.png)<br>
 
 When and where was the hottest temperature observed in the dataset? Is it an anomaly?<br>
 Hottest 9g76dbr175ez 2015-04 329.7295<br>![](/image/image3.png)<br>
+It is not an anomaly. I went to Mexico, it is extremely hot there. I dont want to go there anymore, never and ever!
 
 Where are you most likely to be struck by lightning? Use a precision of 4 Geohash characters and provide the top 3 locations.<br>
 lighting	cft9	9.990485252140819E-4<br>![](/image/image4.png)<br>
@@ -17,6 +18,9 @@ lighting 	f4we 	9.990485252140819E-4<br>![](/image/image6.png)<br>
 
 What is the driest month in the bay area? This should include a histogram with data from each month. (Note: how did you determine what data points are in the bay area?)<br>
 See driest.pdf<br>
+
+I don't know how create the histogram automatically, so I used the python script to create this "histogram" with attribute moisture instead of temperature. From this picture, we can know that in bay area the average mositure level in march is the lowest during the whole year. So march is the driest month in the bay area.  <br>
+
   1 # Bay area driest<br>
   2 01  90.0    1.0 80802.54275810026   30.108865710560625<br><br>
   3 02  97.0    1.0 41408.41587239993   27.227335164835164<br>
@@ -42,16 +46,15 @@ After graduating from USF, you found a startup that aims to provide personalized
   5 Best    9x  06  293.1151512850738![](/image/image11.png)<br>
 
 Your travel startup is so successful that you move on to green energy; here, you want to help power companies plan out the locations of solar and wind farms across North America. Write a MapReduce job that locates the top 3 places for solar and wind farms, as well as a combination of both (solar + wind farm). You will report a total of 9 Geohashes as well as their relevant attributes (for example, cloud cover and wind speeds).<br>
-
-Best wind	d6u1	3.8025355461629156<br>
-Best wind	d6gd	3.813265324569906<br>
-Best wind	b8x5	3.80814301972795<br>
-Best solar	9mwj	54.528572935919776<br>
-Best solar	9mtz	54.692106758741254<br>
-Best solar	9mty	54.860443523299395<br>
-Best sum	d6fe	56.64648443882925<br>
-Best sum	d6fg	56.76648503429156<br>
-Best sum 	d6g7 	56.703870115925426<br>
+Best wind	f9p9	2.420077881605366<br>![](/image/image12.png)<br>
+Best wind	fc0m	2.451849771413264<br>![](/image/image13.png)<br>
+Best wind	f9pd	2.427110122015659<br>![](/image/image14.png)<br>
+Best solar	9mwj	54.5285729359199<br>![](/image/image15.png)<br>
+Best solar	9mty	54.86044352329938<br>![](/image/image16.png)<br>
+Best solar	9mtz	54.69210675874115<br>![](/image/image17.png)<br>
+Best sum	9mqe	54.93183878580474<br>![](/image/image18.png)<br>
+Best sum	9mty	54.95136147020246<br>![](/image/image19.png)<br>
+Best sum	d7d8	54.93401144114256<br>![](/image/image120.png)<br>
 
 Given a Geohash prefix, create a climate chart for the region. This includes high, low, and average temperatures, as well as monthly average rainfall<br>
 See climate.pdf<br>
