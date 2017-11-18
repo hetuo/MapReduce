@@ -15,7 +15,7 @@ public class GreenMapper1
     protected void map(LongWritable key, Text value, Mapper.Context context)
             throws IOException, InterruptedException {
         String[] tokens = value.toString().split("\\t");
-        if (tokens[18].toString().equals("1"))
+        if (tokens[18].toString().equals("1.0"))
             context.write(new Text(tokens[1].substring(0,4)), new Text(tokens[16] + "\t" + tokens[15]));
     }
 }
