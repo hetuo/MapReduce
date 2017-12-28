@@ -1,3 +1,17 @@
+In this project, I analyzed a dataset collected by NOAA for modeling and predicting climate phenomena: the North American Mesoscale Forecast System (NAM). I written MapReduce jobs that filter and aggregate features from the dataset.
+
+What I did in this project:
+1. How many records are in the dataset?
+2. Are there any Geohashes that have snow depths greater than zero for the entire year? List some of the top Geohashes.
+3. When and where was the hottest temperature observed in the dataset? Is it an anomaly?
+
+4. Where are you most likely to be struck by lightning? Use a precision of 4 Geohash characters and provide the top 3 locations.
+5. What is the driest month in the bay area? This should include a histogram with data from each month. (Note: how did you determine what data points are in the bay area?)
+7. After graduating from USF, you found a startup that aims to provide personalized travel itineraries using big data analysis. Given your own personal preferences, build a plan for a year of travel across 5 locations. Or, in other words: pick 5 regions. What is the best time of year to visit them based on the dataset?
+8. Your travel startup is so successful that you move on to green energy; here, you want to help power companies plan out the locations of solar and wind farms across North America. Write a MapReduce job that locates the top 3 places for solar and wind farms, as well as a combination of both (solar + wind farm). You will report a total of 9 Geohashes as well as their relevant attributes (for example, cloud cover and wind speeds).
+9. Given a Geohash prefix, create a climate chart for the region. This includes high, low, and average temperatures, as well as monthly average rainfall (precipitation). Here’s a (poor quality) script that will generate this for you.
+
+
 How many records are in the dataset?<br>
 Total lines 324810912
 
